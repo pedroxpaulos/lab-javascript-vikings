@@ -18,7 +18,7 @@ class Soldier {
       super(health, strength);
       this.name = name;
     }
-    recieveDamage(theDamage) {
+    receiveDamage(theDamage) {
       super.receiveDamage(theDamage);
   
       if (this.health > 0) {
@@ -26,6 +26,7 @@ class Soldier {
       } else {
         return `${this.name} has died in act of combat`;
       }
+
     }
     battleCry() {
       return "Odin Owns You All!";
@@ -37,17 +38,16 @@ class Soldier {
     constructor(health, strength) {
       super(health, strength);
     }
-    recieveDamage(theDamage) {
-      super.receiveDamage(theDamage);
-  
-      if (this.health > 0) {
-        return `A Saxon has received ${theDamage} points of damage`;
-      } else {
-        return `A Saxon has died in act of combat`;
-      }
-    }
+    receiveDamage(theDamage) {
+        super.receiveDamage(theDamage);
+    
+        if (this.health > 0) {
+          return `A Saxon has received ${theDamage} points of damage`
+        } else {
+          return `A Saxon has died in combat`;
+        }
   }
-  
+  };
   // War
   class War {
     constructor() {
@@ -61,14 +61,14 @@ class Soldier {
       this.saxonArmy.push(saxonObject);
     }
     vikingAttack() {
-      let rndmViking = Math.floor(Math.random() * (vinkingArmy.length - 1));
-      let rndmSaxon = Math.floor(Math.random() * (saxonArmy.length - 1));
-      saxonArmy[rndmViking].recieveDamage(saxonArmy[rndmSaxon].strength);
+      let rndmViking = Math.floor(Math.random()  * (this.vinkingArmy.length - 1));
+      let rndmSaxon = Math.floor(Math.random() * (this.saxonArmy.length - 1));
+
       this.saxonArmy.forEach(function (name, index) {
         if (this.saxonArmy[index] <= 0) {
           this.saxonArmy.splice(index, 1);
         }
-        return;
+        return saxonArmy[rndmViking].health;
       });
     }
     saxonAttack() {
